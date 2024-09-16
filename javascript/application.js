@@ -15,10 +15,13 @@ const signUp = (event) => {
   }
 
   fetch(url, requestData)
-    .then((response) => response.json())
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err))
-
+    .then((response) => {
+      if (response.status === 200) {
+        Swal.fire({ title: 'Success', text: 'You are registered!', icon: 'success' })
+      } else {
+        Swal.fire({ title: 'Error!', text: 'Oups! Something went wrong', icon: 'error' })
+      }
+    })
 }
 
 
